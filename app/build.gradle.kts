@@ -34,9 +34,16 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    val coreCtxVersion = "1.9.0"
+    implementation("androidx.core:core-ktx:$coreCtxVersion")
+
+    val appcompatVersion = "1.6.1"
+    implementation("androidx.appcompat:appcompat:$appcompatVersion")
+
+    val androidMaterialVersion = "1.9.0"
+    implementation("com.google.android.material:material:$androidMaterialVersion")
+
+    // Test section
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
