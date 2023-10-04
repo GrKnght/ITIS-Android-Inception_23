@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ITIS-Android-Inception_23</string>
+
+    <string name="main_page_action_btn_text">На следующий экран</string>
+
 </resources>

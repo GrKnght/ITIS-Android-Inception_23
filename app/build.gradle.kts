@@ -30,10 +30,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     val coreCtxVersion = "1.9.0"
     implementation("androidx.core:core-ktx:$coreCtxVersion")
 
@@ -43,6 +48,8 @@ dependencies {
     val androidMaterialVersion = "1.9.0"
     implementation("com.google.android.material:material:$androidMaterialVersion")
 
+    val viewBindingDelegateVersion = "1.5.9"
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:$viewBindingDelegateVersion")
     // Test section
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
