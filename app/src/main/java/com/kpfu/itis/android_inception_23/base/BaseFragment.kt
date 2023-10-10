@@ -1,55 +1,39 @@
 package com.kpfu.itis.android_inception_23.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.kpfu.itis.android_inception_23.R
 
 abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        showMessageInConsole("OnCreateCalled")
+    open fun getToolbar(): Toolbar? = view?.findViewById(R.id.toolbar)
+
+    protected fun setToolbarTitle(@StringRes titleRes: Int) {
+        getToolbar()?.setTitle(titleRes)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        showMessageInConsole("OnCreateViewCalled")
-        return super.onCreateView(inflater, container, savedInstanceState)
+    protected fun setToolbarTitle(title: String) {
+        getToolbar()?.title = title
     }
 
-    override fun onStart() {
-        super.onStart()
-        showMessageInConsole("OnStartCalled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(getToolbar() != null)
     }
 
-    override fun onResume() {
-        super.onResume()
-        showMessageInConsole("OnResumeCalled")
-    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().onBackPressed()
+                true
+            }
 
-    override fun onPause() {
-        super.onPause()
-        showMessageInConsole("OnPauseCalled")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        showMessageInConsole("OnStopCalled")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        showMessageInConsole("OnDestroyViewCalled")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        showMessageInConsole("OnDestroyCalled")
-    }
-
-    private fun showMessageInConsole(message: String) {
-        println("TEST TAG - $message ${this.javaClass.canonicalName}")
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

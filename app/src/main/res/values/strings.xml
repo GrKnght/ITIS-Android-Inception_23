@@ -3,4 +3,14 @@
 
     <string name="main_page_action_btn_text">На следующий экран</string>
 
+    <string name="text_input_phone_et_hint">Введите номер телефона</string>
+    <string name="text_input_name_et_hint">Введите имя</string>
+    <string name="text_input_second_name_et_hint">Введите фамилию</string>
+    <string name="text_input_patronymic_et_hint">Введите отчество</string>
+
+    <!-- Screen names-->
+    <string name="text_input_screen_title">Личный кабинет</string>
+
+    <!-- Menu items -->
+    <string name="main_page_edit_item">Редактировать</string>
 </resources>
