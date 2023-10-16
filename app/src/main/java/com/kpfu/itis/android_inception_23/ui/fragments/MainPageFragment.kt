@@ -63,7 +63,7 @@ class MainPageFragment : BaseFragment(R.layout.fragment_text_input) {
             mainPageActionBtn.setOnClickListener {
                 (requireActivity() as? BaseActivity)?.goToScreen(
                     actionType = ActionType.REPLACE,
-                    destination = TextInputFragment(),
+                    destination = CatalogFragment(),
                     tag = TextInputFragment.TEXT_INPUT_FRAGMENT_TAG,
                     isAddToBackStack = true,
                 )
