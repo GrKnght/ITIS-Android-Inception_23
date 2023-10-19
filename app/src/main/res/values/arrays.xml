@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="questions">
+        <item>Первый вопрос</item>
+        <item>Второй вопрос</item>
+        <item>Третий вопрос</item>
+        <item>Четвертый вопрос</item>
+        <item>Пятый вопрос</item>
+        <item>Шестой вопрос</item>
+        <item>Седьмой вопрос</item>
+        <item>Восьмой  вопрос</item>
+        <item>Девятый  вопрос</item>
+    </string-array>
+</resources>

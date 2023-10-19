@@ -14,7 +14,6 @@ import com.kpfu.itis.android_inception_23.R
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentMainPageBinding
-import com.kpfu.itis.android_inception_23.ui.fragments.SampleDialogFragment.Companion.SAMPLE_DIALOG_FRAGMENT_TAG
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.ParamsKey
 

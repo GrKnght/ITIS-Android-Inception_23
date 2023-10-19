@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.ui.fragments.MainPageFragment
+import com.kpfu.itis.android_inception_23.ui.fragments.QuestionnaireFragment
+import com.kpfu.itis.android_inception_23.ui.fragments.ViewPagerFragment
 import com.kpfu.itis.android_inception_23.utils.ActionType
 
 class MainActivity : BaseActivity() {
@@ -14,13 +16,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .add(
                     fragmentContainerId,
-                    MainPageFragment.newInstance(header = "Header text", message = "message"),
-                    MainPageFragment.MAIN_PAGE_FRAGMENT_TAG,
+                    ViewPagerFragment(),
                 )
                 .commit()
         }
