@@ -3,9 +3,7 @@ package com.kpfu.itis.android_inception_23
 import android.os.Bundle
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
-import com.kpfu.itis.android_inception_23.ui.fragments.MainPageFragment
-import com.kpfu.itis.android_inception_23.ui.fragments.QuestionnaireFragment
-import com.kpfu.itis.android_inception_23.ui.fragments.ViewPagerFragment
+import com.kpfu.itis.android_inception_23.ui.fragments.NewsFeedFragment
 import com.kpfu.itis.android_inception_23.utils.ActionType
 
 class MainActivity : BaseActivity() {
@@ -20,7 +18,8 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .add(
                     fragmentContainerId,
-                    ViewPagerFragment(),
+                    NewsFeedFragment(),
+                    NewsFeedFragment.NEWSFEED_FRAGMENT_TAG,
                 )
                 .commit()
         }
