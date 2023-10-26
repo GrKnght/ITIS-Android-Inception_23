@@ -3,10 +3,11 @@ package com.kpfu.itis.android_inception_23.ui.holder
 import androidx.recyclerview.widget.RecyclerView
 import com.kpfu.itis.android_inception_23.R
 import com.kpfu.itis.android_inception_23.databinding.ItemNewsfeedBinding
+import com.kpfu.itis.android_inception_23.databinding.ItemNewsfeedCvBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel
 
 class NewsfeedViewHolder(
-    private val viewBinding: ItemNewsfeedBinding,
+    private val viewBinding: ItemNewsfeedCvBinding,
     private val onNewsClicked: ((NewsDataModel) -> Unit),
     private val onLikeClicked: ((Int, NewsDataModel) -> Unit),
 ) : RecyclerView.ViewHolder(viewBinding.root) {
@@ -33,8 +34,12 @@ class NewsfeedViewHolder(
             item.newsImage?.let { res ->
                 newsImageIv.setImageResource(res)
             }
-            val likeDrawable = if (item.isLiked) R.drawable.ic_like_red else R.drawable.ic_like_gray
-            likeBtnIv.setImageResource(likeDrawable)
+            changeLikeBtnStatus(isChecked = item.isLiked)
         }
+    }
+
+    fun changeLikeBtnStatus(isChecked: Boolean) {
+        val likeDrawable = if (isChecked) R.drawable.ic_like_red else R.drawable.ic_like_gray
+        viewBinding.likeBtnIv.setImageResource(likeDrawable)
     }
 }

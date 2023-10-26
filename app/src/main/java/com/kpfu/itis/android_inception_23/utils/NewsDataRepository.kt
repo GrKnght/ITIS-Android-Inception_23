@@ -45,5 +45,16 @@ object NewsDataRepository {
         newsList.addAll(list)
     }
 
+    fun addItem() {
+        this.newsList.add(
+            2, NewsDataModel(
+                newsId = "nf_${this.newsList.size + 1}",
+                newsTitle = "Заседание общественной палаты",
+                newsDetails = "Вчера прошло мальдивское заседание общественной палаты на берегу какого-то там залива",
+                newsImage = R.drawable.first_image,
+            )
+        )
+    }
+
     fun getNewsList(): List<NewsDataModel> = newsList
 }

@@ -8,11 +8,14 @@ import com.kpfu.itis.android_inception_23.MainActivity
 import com.kpfu.itis.android_inception_23.R
 import com.kpfu.itis.android_inception_23.adapter.NewsAdapter
 import com.kpfu.itis.android_inception_23.adapter.NewsDetailsFragment
+import com.kpfu.itis.android_inception_23.adapter.decorations.SimpleHorizontalMarginDecorator
+import com.kpfu.itis.android_inception_23.adapter.decorations.SimpleVerticalDecorator
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentNewsfeedBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.NewsDataRepository
+import com.kpfu.itis.android_inception_23.utils.getValueInPx
 
 class NewsFeedFragment : BaseFragment(R.layout.fragment_newsfeed) {
 
@@ -41,16 +44,22 @@ class NewsFeedFragment : BaseFragment(R.layout.fragment_newsfeed) {
             newsfeedRv.layoutManager = layoutManager
             newsfeedRv.adapter = newsAdapter
 
+            val marginValue = 16.getValueInPx(resources.displayMetrics)
+            newsfeedRv.addItemDecoration(SimpleHorizontalMarginDecorator(itemOffset = marginValue))
+            newsfeedRv.addItemDecoration(SimpleVerticalDecorator(itemOffset = marginValue / 4))
+
             newsAdapter?.setItems(NewsDataRepository.getNewsList())
         }
     }
 
     private fun onNewsClicked(newsDataModel: NewsDataModel) {
-        (requireActivity() as? MainActivity)?.goToScreen(
-            actionType = ActionType.REPLACE,
-            destination = NewsDetailsFragment(),
-            tag = NewsDetailsFragment.NEWS_DETAILS_FRAGMENT_TAG,
-        )
+//        (requireActivity() as? MainActivity)?.goToScreen(
+//            actionType = ActionType.REPLACE,
+//            destination = NewsDetailsFragment(),
+//            tag = NewsDetailsFragment.NEWS_DETAILS_FRAGMENT_TAG,
+//        )
+        NewsDataRepository.addItem()
+        newsAdapter?.setItems(NewsDataRepository.getNewsList())
     }
 
     private fun onLikeClicked(position: Int, newsDataModel: NewsDataModel) {
