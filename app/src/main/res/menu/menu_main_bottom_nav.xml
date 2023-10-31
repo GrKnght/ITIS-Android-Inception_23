@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_main_graph"
+        android:icon="@drawable/ic_home_blue"
+        android:title="@string/main_page_edit_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_settings_graph"
+        android:icon="@drawable/ic_settings_blue"
+        android:title="@string/main_page_edit_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_messages_graph"
+        android:icon="@drawable/ic_message_blue"
+        android:title="@string/main_page_edit_item"
+        app:showAsAction="ifRoom" />
+
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_messages_graph"
+    app:startDestination="@id/navigationProfileFragment2">
+
+    <fragment
+        android:id="@+id/navigationProfileFragment2"
+        android:name="com.kpfu.itis.android_inception_23.ui.fragments.navigation.NavigationProfileFragment"
+        android:label="fragment_navigation_profile"
+        tools:layout="@layout/fragment_navigation_profile" />
+</navigation>

@@ -2,12 +2,13 @@ package com.kpfu.itis.android_inception_23.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.kpfu.itis.android_inception_23.utils.ActionType
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layoutRes) {
 
     protected abstract val fragmentContainerId: Int
 
@@ -24,8 +25,8 @@ abstract class BaseActivity : AppCompatActivity() {
             ) {
                 super.onFragmentViewCreated(fm, fragment, v, savedInstanceState)
                 (fragment as? BaseFragment)?.getToolbar()?.let { safeToolbar ->
-                    this@BaseActivity.setSupportActionBar(safeToolbar)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(supportFragmentManager.backStackEntryCount > 0)
+//                    this@BaseActivity.setSupportActionBar(safeToolbar)
+//                    supportActionBar?.setDisplayHomeAsUpEnabled(supportFragmentManager.backStackEntryCount > 0)
                 }
             }
         }, false)

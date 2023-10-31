@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main_graph"
+    app:startDestination="@id/navigationMainFragment">
+
+    <fragment
+        android:id="@+id/navigationMainFragment"
+        android:name="com.kpfu.itis.android_inception_23.ui.fragments.navigation.NavigationMainFragment"
+        android:label="fragment_navigation_main"
+        tools:layout="@layout/fragment_navigation_main">
+        <action
+            android:id="@+id/action_navigationMainFragment_to_navigationProfileFragment"
+            app:destination="@id/navigationProfileFragment" />
+        <action
+            android:id="@+id/action_navigationMainFragment_to_navigationSettingsFragment"
+            app:destination="@id/navigationSettingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationProfileFragment"
+        android:name="com.kpfu.itis.android_inception_23.ui.fragments.navigation.NavigationProfileFragment"
+        android:label="fragment_navigation_profile"
+        tools:layout="@layout/fragment_navigation_profile">
+        <action
+            android:id="@+id/action_navigationProfileFragment_to_navigationSettingsFragment"
+            app:destination="@id/navigationSettingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationSettingsFragment"
+        android:name="com.kpfu.itis.android_inception_23.ui.fragments.navigation.NavigationSettingsFragment"
+        android:label="fragment_navigation_settings"
+        tools:layout="@layout/fragment_navigation_settings">
+
+        <argument
+            android:name="settings_data"
+            app:argType="string" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_settings_fragment"
+        app:destination="@+id/navigationSettingsFragment" />
+
+</navigation>
