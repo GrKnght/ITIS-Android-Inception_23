@@ -1,15 +1,16 @@
 package com.kpfu.itis.android_inception_23
 
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.fragment.app.commit
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Screen
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.ActivityMainBinding
 import com.kpfu.itis.android_inception_23.ui.fragments.NewsFeedFragment
+import com.kpfu.itis.android_inception_23.ui.screen.AppScreens
 import com.kpfu.itis.android_inception_23.utils.ActionType
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
@@ -18,15 +19,39 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
     private val viewBinding by viewBinding(ActivityMainBinding::bind)
 
+    private val cicerone = Cicerone.create()
+
+    val router get() = cicerone.router
+
+    val navigationHolder get() = cicerone.getNavigatorHolder()
+
+    private val navigator = object : AppNavigator(this, fragmentContainerId) {}
+
+    override fun onResume() {
+        super.onResume()
+        navigationHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigationHolder.removeNavigator()
+        super.onPause()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
-        setSupportActionBar(viewBinding.toolbar)
+        supportFragmentManager.commit {
+            replace(fragmentContainerId, NewsFeedFragment())
+        }
 
-        val navHost = supportFragmentManager.findFragmentById(fragmentContainerId) as NavHostFragment
-        NavigationUI.setupWithNavController(viewBinding.mainBottomNavigation, navHost.navController)
+//        setSupportActionBar(viewBinding.toolbar)
+//
+//        val navHost = supportFragmentManager.findFragmentById(fragmentContainerId) as NavHostFragment
+//        NavigationUI.setupWithNavController(viewBinding.mainBottomNavigation, navHost.navController)
+//
+//        NavigationUI.setupActionBarWithNavController(this, navHost.navController)
 
-        NavigationUI.setupActionBarWithNavController(this, navHost.navController)
+        // router.navigateTo(AppScreens.MainPageFragmentScreen("arg2", "arg3"))
 
 //        if (savedInstanceState == null) {
 //            supportFragmentManager.beginTransaction()
@@ -96,5 +121,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 this.addToBackStack(null)
             }
         }.commit()
+    }
+
+    override fun navigateWithRouter(destination: Screen) {
+        router.navigateTo(destination)
     }
 }

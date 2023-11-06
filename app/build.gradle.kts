@@ -56,6 +56,9 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
 
+    val ciceroneVersion = "7.1"
+    implementation("com.github.terrakok:cicerone:$ciceroneVersion")
+
     // Test section
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

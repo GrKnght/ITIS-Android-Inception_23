@@ -6,6 +6,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.github.terrakok.cicerone.Screen
 import com.kpfu.itis.android_inception_23.utils.ActionType
 
 abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layoutRes) {
@@ -37,5 +38,9 @@ abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layou
         destination: BaseFragment,
         tag: String? = null,
         isAddToBackStack: Boolean = true,
+    )
+
+    abstract fun navigateWithRouter(
+        destination: Screen
     )
 }
