@@ -2,6 +2,7 @@ package com.kpfu.itis.android_inception_23.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kpfu.itis.android_inception_23.MainActivity
@@ -15,6 +16,7 @@ import com.kpfu.itis.android_inception_23.databinding.FragmentNewsfeedBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.NewsDataRepository
+import com.kpfu.itis.android_inception_23.utils.ParamsKey
 import com.kpfu.itis.android_inception_23.utils.getValueInPx
 
 class NewsFeedFragment : BaseFragment(R.layout.fragment_newsfeed) {
@@ -58,8 +60,9 @@ class NewsFeedFragment : BaseFragment(R.layout.fragment_newsfeed) {
 //            destination = NewsDetailsFragment(),
 //            tag = NewsDetailsFragment.NEWS_DETAILS_FRAGMENT_TAG,
 //        )
-        NewsDataRepository.addItem()
-        newsAdapter?.setItems(NewsDataRepository.getNewsList())
+//        NewsDataRepository.addItem()
+//        newsAdapter?.setItems(NewsDataRepository.getNewsList())
+        parentFragmentManager.setFragmentResult(ParamsKey.DIALOG_RESULT_KEY, bundleOf("first" to "second"))
     }
 
     private fun onLikeClicked(position: Int, newsDataModel: NewsDataModel) {

@@ -5,4 +5,7 @@ object ParamsKey {
     // MainPage
     const val TITLE_TEXT_KEY = "TITLE_TEXT_KEY"
     const val MESSAGE_TEXT_KEY = "MESSAGE_TEXT_KEY"
+
+    // Dialog result key
+    const val DIALOG_RESULT_KEY = "DIALOG_RESULT"
 }
