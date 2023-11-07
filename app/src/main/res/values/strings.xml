@@ -13,4 +13,9 @@
 
     <!-- Menu items -->
     <string name="main_page_edit_item">Редактировать</string>
+
+    <string name="permission_denied_pattern">Вы отклонили следующие разрешения: %1$s</string>
+    <string name="permission_denined_desc">Приложение работает некорректно,пожалуйста, предоставьте
+        разрешение через настройки</string>
+    <string name="go_to_settings">Перейти в настройки</string>
 </resources>
