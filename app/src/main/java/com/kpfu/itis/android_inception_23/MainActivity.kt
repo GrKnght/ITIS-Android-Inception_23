@@ -1,12 +1,14 @@
 package com.kpfu.itis.android_inception_23
 
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.ui.fragments.NewsFeedFragment
+import com.kpfu.itis.android_inception_23.ui.fragments.NotificationsCenterFragment
 import com.kpfu.itis.android_inception_23.ui.fragments.PermissionsFragment
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.PermissionRequestHandler
@@ -25,7 +27,7 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .add(
                     fragmentContainerId,
-                    PermissionsFragment(),
+                    NotificationsCenterFragment(),
                     NewsFeedFragment.NEWSFEED_FRAGMENT_TAG,
                 )
                 .commit()
@@ -36,6 +38,9 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this, "Granted", Toast.LENGTH_LONG).show()
             }
         )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 
     fun requestPermission(permission: String) {
