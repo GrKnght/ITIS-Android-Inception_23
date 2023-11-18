@@ -12,9 +12,14 @@ import com.kpfu.itis.android_inception_23.databinding.ActivityMainBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.PermissionRequestHandler
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 class MainActivity : BaseActivity() {
@@ -29,18 +34,59 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        with(viewBinding) {
+            requestBtn.setOnClickListener {
+                lifecycleScope.launch {
+                    viewBinding.mainProgressBar.isVisible = true
+                    runCatching {
+                        // Работаем в главном потоке, т.к. не модифицировали контекст lifecycleScope
+                        getNewsData(number = 1)
+                    }.onSuccess { data ->
+                        headerTv.text = data.newsTitle
+                        mainProgressBar.isVisible = false
+                    }.onFailure {
+                        Toast.makeText(this@MainActivity, "Exception Occurred $it", Toast.LENGTH_SHORT).show()
+                        mainProgressBar.isVisible = false
+                    }
+                }
+            }
 
-        viewBinding.requestBtn.setOnClickListener {
-            lifecycleScope.launch {
-                viewBinding.mainProgressBar.isVisible = true
-                runCatching {
-                    getNewsData(number = 1)
-                }.onSuccess { data ->
-                    viewBinding.headerTv.text = data.newsTitle
-                    viewBinding.mainProgressBar.isVisible = false
-                }.onFailure {
-                    Toast.makeText(this@MainActivity, "Exception Occurred $it", Toast.LENGTH_SHORT).show()
-                    viewBinding.mainProgressBar.isVisible = false
+            asyncRequestBtn.setOnClickListener {
+                lifecycleScope.launch {
+                    mainProgressBar.isVisible = true
+                    runCatching {
+                        val jobsList = mutableListOf<Deferred<NewsDataModel>>()
+                        withContext(Dispatchers.IO) {
+                            var counter = 0
+                            repeat(times = 5) {
+                                jobsList.add(async(start = CoroutineStart.LAZY) { getNewsData(++counter) })
+                            }
+                            jobsList.awaitAll()
+                        }
+                    }.onSuccess { newsList ->
+                        mainProgressBar.isVisible = false
+                        // Do something
+                    }.onFailure {
+                        mainProgressBar.isVisible = false
+                        // Handle error
+                    }
+                }
+            }
+
+            thirdRequestBtn.setOnClickListener {
+                lifecycleScope.launch {
+                    mainProgressBar.isVisible = true
+                    runCatching {
+                        withContext(Dispatchers.IO) {
+                            getNewsData(1)
+                        }
+                    }.onSuccess { newsData ->
+                        mainProgressBar.isVisible = false
+                        // Do something
+                    }.onFailure {
+                        mainProgressBar.isVisible = false
+                        // Handle error
+                    }
                 }
             }
         }
@@ -57,7 +103,7 @@ class MainActivity : BaseActivity() {
     }
 
     private suspend fun getNewsData(number: Int): NewsDataModel {
-        delay(2000L)
+        delay(getRandom())
         return NewsDataModel(newsId = "IdSamp", newsTitle = "TitleSamp")
     }
 

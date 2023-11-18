@@ -43,6 +43,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="request"
+        app:layout_constraintBottom_toTopOf="@id/async_request_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/async_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="async request"
+        app:layout_constraintBottom_toTopOf="@id/third_request_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/third_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="with context request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
