@@ -39,8 +39,4 @@ abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layou
         tag: String? = null,
         isAddToBackStack: Boolean = true,
     )
-
-    abstract fun navigateWithRouter(
-        destination: Screen
-    )
 }
