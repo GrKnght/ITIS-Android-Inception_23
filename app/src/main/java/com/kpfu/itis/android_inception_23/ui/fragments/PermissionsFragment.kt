@@ -21,7 +21,7 @@ class PermissionsFragment : BaseFragment(R.layout.fragment_permission) {
         super.onViewCreated(view, savedInstanceState)
         with(viewBinding) {
             requestPermActionBtn.setOnClickListener {
-                (requireActivity() as? MainActivity)?.requestPermission(permission = Manifest.permission.CAMERA)
+               //  (requireActivity() as? MainActivity)?.requestPermission(permission = Manifest.permission.CAMERA)
             }
             checkPermActionBtn.setOnClickListener {
 //                if (ContextCompat.checkSelfPermission(
