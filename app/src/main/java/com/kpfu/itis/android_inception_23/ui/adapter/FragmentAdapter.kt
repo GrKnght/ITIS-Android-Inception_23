@@ -1,4 +1,4 @@
-package com.kpfu.itis.android_inception_23.adapter
+package com.kpfu.itis.android_inception_23.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

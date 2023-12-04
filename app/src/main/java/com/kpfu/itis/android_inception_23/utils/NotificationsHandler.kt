@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.kpfu.itis.android_inception_23.MainActivity
+import com.kpfu.itis.android_inception_23.ui.MainActivity
 import com.kpfu.itis.android_inception_23.R
 
 class NotificationsHandler {

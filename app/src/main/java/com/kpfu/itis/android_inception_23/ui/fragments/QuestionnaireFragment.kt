@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kpfu.itis.android_inception_23.R
-import com.kpfu.itis.android_inception_23.adapter.ChatAdapter
-import com.kpfu.itis.android_inception_23.adapter.QuestionnaireAdapter
+import com.kpfu.itis.android_inception_23.ui.adapter.ChatAdapter
+import com.kpfu.itis.android_inception_23.ui.adapter.QuestionnaireAdapter
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentQuestionnaireBinding
 import com.kpfu.itis.android_inception_23.model.MessageModel

@@ -1,15 +1,15 @@
-package com.kpfu.itis.android_inception_23
+package com.kpfu.itis.android_inception_23.ui
 
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
+import com.kpfu.itis.android_inception_23.R
 import com.kpfu.itis.android_inception_23.base.BaseActivity
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.ui.fragments.NewsFeedFragment
 import com.kpfu.itis.android_inception_23.ui.fragments.NotificationsCenterFragment
-import com.kpfu.itis.android_inception_23.ui.fragments.PermissionsFragment
+import com.kpfu.itis.android_inception_23.ui.fragments.auth.AuthFragment
 import com.kpfu.itis.android_inception_23.utils.ActionType
 import com.kpfu.itis.android_inception_23.utils.PermissionRequestHandler
 
@@ -27,15 +27,15 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .add(
                     fragmentContainerId,
-                    NotificationsCenterFragment(),
-                    NewsFeedFragment.NEWSFEED_FRAGMENT_TAG,
+                    AuthFragment(),
+                    AuthFragment.AUTH_FRAGMENT_TAG,
                 )
                 .commit()
         }
         permissionRequestHandler = PermissionRequestHandler(
             activity = this,
             callback = {
-                Toast.makeText(this, "Granted", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Permission granted: $it", Toast.LENGTH_LONG).show()
             }
         )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -86,10 +86,6 @@ class MainActivity : BaseActivity() {
                 this.addToBackStack(null)
             }
         }.commit()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     companion object {

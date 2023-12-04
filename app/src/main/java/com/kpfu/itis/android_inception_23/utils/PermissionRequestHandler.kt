@@ -5,7 +5,7 @@ import com.kpfu.itis.android_inception_23.base.BaseActivity
 
 class PermissionRequestHandler(
     activity: BaseActivity,
-    private val callback: (() -> Unit)? = null,
+    private val callback: ((String?) -> Unit)? = null,
     private val rationaleCallback: (() -> Unit)? = null,
     private val deniedCallback: (() -> Unit)? = null,
 ) {
@@ -15,7 +15,7 @@ class PermissionRequestHandler(
     private val singlePermissionLauncher =
         activity.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                callback?.invoke()
+                callback?.invoke(currentPermission)
             } else {
                 if (currentPermission.isNotEmpty() && activity.shouldShowRequestPermissionRationale(currentPermission)) {
                     rationaleCallback?.invoke()
@@ -36,7 +36,7 @@ class PermissionRequestHandler(
             }
         }
         if (check) {
-            callback?.invoke()
+            callback?.invoke(currentPermission)
         } else {
             permissionsMap.forEach {
                 if (activity.shouldShowRequestPermissionRationale(it.key)) {

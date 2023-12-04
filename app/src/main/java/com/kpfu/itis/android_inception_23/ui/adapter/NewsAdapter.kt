@@ -1,11 +1,11 @@
-package com.kpfu.itis.android_inception_23.adapter
+package com.kpfu.itis.android_inception_23.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.kpfu.itis.android_inception_23.adapter.diffutil.NewsDiffUtil
+import com.kpfu.itis.android_inception_23.ui.adapter.diffutil.NewsDiffUtil
 import com.kpfu.itis.android_inception_23.databinding.ItemNewsfeedCvBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel
 import com.kpfu.itis.android_inception_23.ui.holder.NewsfeedViewHolder

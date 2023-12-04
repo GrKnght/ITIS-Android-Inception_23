@@ -1,10 +1,10 @@
-package com.kpfu.itis.android_inception_23.adapter.decorations
+package com.kpfu.itis.android_inception_23.ui.adapter.decorations
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class SimpleHorizontalMarginDecorator(
+class SimpleVerticalDecorator(
     private val itemOffset: Int
 ) : RecyclerView.ItemDecoration() {
 
@@ -13,8 +13,8 @@ class SimpleHorizontalMarginDecorator(
         super.getItemOffsets(outRect, view, parent, state)
 
         with(outRect) {
-            left = itemOffset
-            right = itemOffset
+            top = itemOffset
+            bottom = itemOffset
         }
     }
 }

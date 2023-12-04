@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.kpfu.itis.android_inception_23.MainActivity
+import com.kpfu.itis.android_inception_23.ui.MainActivity
 import com.kpfu.itis.android_inception_23.R
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentPermissionBinding

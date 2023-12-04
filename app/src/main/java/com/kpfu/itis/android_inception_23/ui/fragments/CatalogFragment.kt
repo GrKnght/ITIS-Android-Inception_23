@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kpfu.itis.android_inception_23.R
-import com.kpfu.itis.android_inception_23.adapter.CatalogAdapter
+import com.kpfu.itis.android_inception_23.ui.adapter.CatalogAdapter
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentCatalogBinding
 import com.kpfu.itis.android_inception_23.model.CatalogData

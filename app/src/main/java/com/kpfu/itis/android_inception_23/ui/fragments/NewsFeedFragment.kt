@@ -6,9 +6,9 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kpfu.itis.android_inception_23.R
-import com.kpfu.itis.android_inception_23.adapter.NewsAdapter
-import com.kpfu.itis.android_inception_23.adapter.decorations.SimpleHorizontalMarginDecorator
-import com.kpfu.itis.android_inception_23.adapter.decorations.SimpleVerticalDecorator
+import com.kpfu.itis.android_inception_23.ui.adapter.NewsAdapter
+import com.kpfu.itis.android_inception_23.ui.adapter.decorations.SimpleHorizontalMarginDecorator
+import com.kpfu.itis.android_inception_23.ui.adapter.decorations.SimpleVerticalDecorator
 import com.kpfu.itis.android_inception_23.base.BaseFragment
 import com.kpfu.itis.android_inception_23.databinding.FragmentNewsfeedBinding
 import com.kpfu.itis.android_inception_23.model.NewsDataModel

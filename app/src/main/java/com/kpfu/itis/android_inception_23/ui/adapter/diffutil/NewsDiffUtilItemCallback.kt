@@ -1,4 +1,4 @@
-package com.kpfu.itis.android_inception_23.adapter.diffutil
+package com.kpfu.itis.android_inception_23.ui.adapter.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
 import com.kpfu.itis.android_inception_23.model.NewsDataModel

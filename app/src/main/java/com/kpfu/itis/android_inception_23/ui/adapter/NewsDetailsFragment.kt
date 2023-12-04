@@ -1,4 +1,4 @@
-package com.kpfu.itis.android_inception_23.adapter
+package com.kpfu.itis.android_inception_23.ui.adapter
 
 import android.os.Bundle
 import android.view.View
